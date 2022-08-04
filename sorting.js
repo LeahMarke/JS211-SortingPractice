@@ -1006,20 +1006,15 @@ const stringsToNumbs = strNums.map((numbers) => Number(numbers));
 console.log(stringsToNumbs);
 
 // With the same numbers, find the sum of the even values
-const stringEvens = stringsToNumbs.filter((num) => num % 2 === 0);
-const sumEvens = stringEvens.reduce((a, b) => a + b);
+const sumEvens = stringsToNumbs
+  .filter((num) => num % 2 === 0)
+  .reduce((a, b) => a + b);
 console.log(sumEvens);
-
 // Find the index of the first value when added to it's index = 512
-// const atxIdx = (num) => {
-//   num + num[i];
-// };
-let i = 0;
-const atxIdx = stringsToNumbs.findIndex((num) => {
-  num + num[i] === 512;
-});
+
+const atxIdx = stringsToNumbs.findIndex((num, i) => num + i === 512);
 console.log(atxIdx);
-// console.log(`index: ${atxIdx}, value: ${nums[atxIdx]}`);
+console.log(`index: ${atxIdx}, value: ${stringsToNumbs[atxIdx]}`);
 
 const weather = [
   {
@@ -1099,7 +1094,9 @@ const weatherStates = weather.map((object) => {
 console.log(weatherStates);
 
 //find the id of the object in weather that has a min_temp of 15.915
-const idealTemp = weather.map((object) => {
-  if (object.min_temp === 15.915)
-    console.log(`The ID of the object with min-temp of 15.915 is ${object.id}`);
-});
+// const idealTemp = weather.map((object) => {
+//   if (object.min_temp === 15.915)
+//     console.log(`The ID of the object with min-temp of 15.915 is ${object.id}`);
+// });
+const idealTempID = weather.find((object) => object.min_temp === 15.915).id;
+console.log(idealTempID);
